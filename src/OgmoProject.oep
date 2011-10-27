@@ -1,0 +1,20 @@
+<project>
+	<name>DefaultMock OgmoTest</name>
+	<settings>
+		<defaultWidth>1024</defaultWidth>
+		<defaultHeight>768</defaultHeight>
+	</settings>
+	
+	<tilesets>
+		<tileset name="tiles" image="../assets/sprites/mock_ground.png" tileHeight="16" tileWidth="16" />
+	</tilesets>
+	
+	<objects>
+		<object name="playerStart" image="../assets/sprites/player_start.png" height="16" width="16" limit="1" />		
+	</objects>
+	
+	<layers>
+		<tiles name="OurTiles" gridSize="16" />
+		<objects name="objects" gridSize="16" />
+	</layers>
+</project>

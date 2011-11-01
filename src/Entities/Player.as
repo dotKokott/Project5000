@@ -18,21 +18,33 @@ package Entities
 			sprSwordguy.add("stand", [0, 1, 2, 3, 4, 5], 20, true);
 			sprSwordguy.add("run", [6, 7, 8, 9, 10, 11], 20, true);
 			graphic = sprSwordguy;
+			setHitbox(48, 32);
 		}		
 	
 		
 		public override function update():void
-		{
-			
-			if (Input.check(Key.D))
+		{		
+			if (isFalling())
 			{
-				sprSwordguy.play("run", false);
-				x += speed * FP.elapsed;				
+				y += speed * FP.elapsed;				
 			}
 			else
 			{
-				sprSwordguy.play("stand");				
-			}						
-		}		
+				if (Input.check(Key.D))
+				{
+					sprSwordguy.play("run", false);
+					x += speed * FP.elapsed;				
+				}
+				else
+				{
+					sprSwordguy.play("stand");				
+				}
+			}
+		}
+		
+		private function isFalling():Boolean
+		{
+			return (collide("level", x, y) == null);			
+		}
 	}
 }

@@ -15,14 +15,14 @@ package Entities
 		
 		private var xspeed:Number = 0.0;
 		private var yspeed:Number = 0.0;
-		private var aspeed:Number = 0.5;
+		private var aspeed:Number = 0.7;
 		private var gspeed:Number = 0.2;
 		private var fspeed:Number = 0.4;
 		private var mspeed:Number = 1.0;
-		private var jspeed:Number = 5;
+		private var jspeed:Number = 6;
 		
 		public function Player() 
-		{
+		{				
 			sprSwordguyRight.add("stand", [0, 1, 2, 3, 4, 5], 20, true);
 			sprSwordguyRight.add("run", [6, 7, 8, 9, 10, 11], 20, true);
 			
@@ -40,23 +40,25 @@ package Entities
 		
 		override public function update():void
 		{
-			//move/jump
-			if (Input.check("right")) 
+			var RightPressed:Boolean = Input.check("right");
+			var LeftPressed:Boolean = Input.check("left");
+			var JumpPressed:Boolean = Input.check("jump");
+			
+			if (RightPressed) 
 			{ 				
 				xspeed += aspeed;
 				graphic = sprSwordguyRight;
 				sprSwordguyRight.play("run");
 			}
-			if (Input.check("left")) 
+			if (LeftPressed) 
 			{ 				
 				xspeed -= aspeed;  
 				graphic = sprSwordguyLeft;
 				sprSwordguyLeft.play("run");
 			}
 			
-			if (Input.check("jump") && collide("level", x, y + 1)) { yspeed = - jspeed; }
+			if (JumpPressed && collide("level", x, y + 1)) { yspeed = - jspeed; }
 			
-			//actually move the player now
 			for (var i:int = 0; i < Math.abs(xspeed); i += 1) 
 			{
 				if (!collide("level", x + FP.sign(xspeed), y)) { x += FP.sign(xspeed); } else { xspeed = 0; break; }
@@ -66,13 +68,13 @@ package Entities
 				if (!collide("level", x, y + FP.sign(yspeed))) { y += FP.sign(yspeed); } else { yspeed = 0; break; }
 			}
 			yspeed += gspeed;
-			if (!Input.check("right") && !Input.check("left")) 
+			if (!RightPressed && !LeftPressed) 
 			{
 				xspeed -= FP.sign(xspeed) * fspeed;
 				if (Math.abs(xspeed) <= 0.2) { xspeed = 0; }
 			}
 			if (Math.abs(xspeed) > mspeed) { xspeed = FP.sign(xspeed) * mspeed; }
-			if (!Input.check("jump") && yspeed < 0) 
+			if (!JumpPressed && yspeed < 0) 
 			{
 				yspeed += gspeed;
 			}

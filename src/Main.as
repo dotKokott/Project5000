@@ -6,9 +6,9 @@ package
 	public class Main extends Engine 
 	{	
 		public function Main()
-		{
+		{			
 			super(1024, 768, 60, false);
-			FP.world = new MyWorld;			
+			FP.world = new MyWorld;
 		}			
 	}	
 }

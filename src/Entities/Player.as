@@ -15,7 +15,7 @@ package Entities
 		
 		private var xspeed:Number = 0.0;
 		private var yspeed:Number = 0.0;
-		private var aspeed:Number = 0.7;
+		private var aspeed:Number = 3;
 		private var gspeed:Number = 0.2;
 		private var fspeed:Number = 0.4;
 		private var mspeed:Number = 1.0;

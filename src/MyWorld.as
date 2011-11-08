@@ -1,5 +1,6 @@
 package  
 {
+	import Entities.MovingCharacter.MovingCharacter;
 	import net.flashpunk.FP;
 	import net.flashpunk.World;
 	import net.flashpunk.utils.Input;
@@ -18,8 +19,7 @@ package
 		override public function begin():void 
 		{
 			add(new Player());
-			add(new Level(DEFAULT_MAP));
-			super.begin();
+			add(new Level(DEFAULT_MAP));							
 		}		
 	}
 }

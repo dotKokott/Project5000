@@ -14,11 +14,7 @@ package Entities
 		[Embed(source = '../../assets/sprites/player_left.png')] private const sprPlayerLeft:Class;			
 		
 		public function Player()
-		{
-			FP.console.toggleKey = Key.ENTER;
-			FP.console.debug = true;
-			FP.console.enable();
-			
+		{			
 			leftSpritemap = new Spritemap(sprPlayerLeft, 48, 32);
 			rightSpritemap = new Spritemap(sprPlayerRight, 48, 32);
 			

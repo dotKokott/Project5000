@@ -1,6 +1,7 @@
 package  
 {
 	import Entities.MovingCharacter.MovingCharacter;
+	import Entities.Zauberer;
 	import net.flashpunk.FP;
 	import net.flashpunk.World;
 	import net.flashpunk.utils.Input;
@@ -19,6 +20,7 @@ package
 		override public function begin():void 
 		{
 			add(new Player());
+			add(new Zauberer());
 			add(new Level(DEFAULT_MAP));							
 		}		
 	}

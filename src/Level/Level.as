@@ -12,12 +12,12 @@ package Level
 		
 		public function Level(xml:Class)
 		{
-			_tiles = new Tilemap(Assets.SPRITE_TILESET, 1024, 786, 16, 16);
+			_tiles = new Tilemap(Assets.SPRITE_TILESET, 1024, 786, 32, 32);
 			
 			graphic = _tiles;
 			layer = 1;
 			
-			_grid = new Grid(1024, 786, 16, 16, 0, 0);
+			_grid = new Grid(1024, 786, 32, 32, 0, 0);
 			mask = _grid;
 			type = "level";
 
@@ -37,8 +37,8 @@ package Level
 			dataList = xmlData.OurTiles.tile;			
 			for each(dataElement in dataList)
 			{
-				_tiles.setTile(int(dataElement.@x) / 16, int(dataElement.@y) / 16, int(dataElement.@tx) / 16);				
-				_grid.setTile(int(dataElement.@x) / 16, int(dataElement.@y) / 16, (int(dataElement.@tx) / 16 == 0));
+				_tiles.setTile(int(dataElement.@x) / 32, int(dataElement.@y) / 32, int(dataElement.@tx) / 32);				
+				_grid.setTile(int(dataElement.@x) / 32, int(dataElement.@y) / 32, (int(dataElement.@tx) / 32 == 0));
 			}
 			
 		}

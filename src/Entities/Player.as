@@ -21,8 +21,9 @@ package Entities
 		protected var gravity:Number = 0.2;
 		protected var floatSpeed:Number = 0.4;
 		protected var maximalSpeed:Number = 3;
-		protected var jumpSpeed:Number = 6;
-		
+		protected var jumpSpeed:Number = 6;		
+		protected var direction:Number = 1;
+				
 		private var attackTimeout:Number = 0.3;
 		private var attackTimer:Number = 0;
 		private var allowAttack:Boolean = false;
@@ -57,11 +58,13 @@ package Entities
 			if (Input.check("right"))
 			{ 				
 				horizontalSpeed += horizontalAcceleration;
+				direction = 1;
 				graphic = rightSpritemap;
 			}
 			if (Input.check("left")) 
 			{ 				
 				horizontalSpeed -= horizontalAcceleration;  
+				direction = -1;
 				graphic = leftSpritemap;
 			}
 			
@@ -127,11 +130,9 @@ package Entities
 			
 			if (Input.check("attack") && allowAttack)
 			{				
-				this.world.add(new ClubMateProjectile(this));
+				this.world.add(new ClubMateProjectile(this, direction));
 				allowAttack = false;
-			}
-			
-
+			}		
 		}
 		
 		public function animate():void

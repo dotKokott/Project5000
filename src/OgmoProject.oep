@@ -6,7 +6,7 @@
 	</settings>
 	
 	<tilesets>
-		<tileset name="tiles" image="../assets/sprites/mock_ground.png" tileHeight="16" tileWidth="16" />
+		<tileset name="tiles" image="../assets/sprites/mock_ground.png" tileHeight="32" tileWidth="32" />
 	</tilesets>
 	
 	<objects>
@@ -14,7 +14,7 @@
 	</objects>
 	
 	<layers>
-		<tiles name="OurTiles" gridSize="16" />
+		<tiles name="OurTiles" gridSize="32" />
 		<objects name="objects" gridSize="16" />
 	</layers>
 </project>

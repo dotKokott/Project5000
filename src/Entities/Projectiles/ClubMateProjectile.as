@@ -26,7 +26,7 @@ package Entities.Projectiles
 		private var ExplosionEmitter:Emitter;
 		private var shardsSpritemap:Spritemap;
 		
-		public function ClubMateProjectile(Parent:Entity) 
+		public function ClubMateProjectile(Parent:Entity,Direction:Number) 
 		{
 			bottleImage = new Image(SPRITE_BOTTLE);
 			shardsSpritemap = new Spritemap(SPRITE_SHARDS, 16, 16);
@@ -37,10 +37,12 @@ package Entities.Projectiles
 			x = Parent.x + 10;
 			y = Parent.y;
 			
+			horizontalAcceleration *= Direction;
+			
 			ExplosionEmitter = new Emitter(SPRITE_SHARDS, 16, 16);
 			ExplosionEmitter.newType("explode", [0,1,2,3,4,5,6]);
 			ExplosionEmitter.setAlpha("explode", 1, 0);
-			ExplosionEmitter.setMotion("explode",  0, 30, 2, 180, -40, -0.5, Ease.expoOut);			
+			ExplosionEmitter.setMotion("explode",  0, 30, 0.5, 180, -40, -0.5, Ease.expoOut);			
 			
 			ExplosionEmitter.relative = false;
 			graphic = new Graphiclist(bottleImage, ExplosionEmitter);

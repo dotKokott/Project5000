@@ -98,7 +98,7 @@ package Entities.Projectiles
 					ExplosionEmitter.emit("explode", this.centerX, this.centerY);				
 				}
 				
-				if (!collidable && ExplosionEmitter.particleCount == 0)
+				if (!collidable && ExplosionEmitter.particleCount == EXPLOSION_SIZE)
 				{
 					this.world.remove(this);	
 				}						

@@ -1,8 +1,8 @@
 <project>
 	<name>DefaultMock OgmoTest</name>
 	<settings>
-		<defaultWidth>1024</defaultWidth>
-		<defaultHeight>768</defaultHeight>
+		<defaultWidth>4000</defaultWidth>
+		<defaultHeight>608</defaultHeight>
 	</settings>
 	
 	<tilesets>

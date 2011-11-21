@@ -12,12 +12,12 @@ package Level
 		
 		public function Level(xml:Class)
 		{
-			_tiles = new Tilemap(Assets.SPRITE_TILESET, 1024, 786, 32, 32);
+			_tiles = new Tilemap(Assets.SPRITE_TILESET, 4000, 608, 32, 32);
 			
 			graphic = _tiles;
 			layer = 1;
 			
-			_grid = new Grid(1024, 786, 32, 32, 0, 0);
+			_grid = new Grid(4000, 608, 32, 32, 0, 0);
 			mask = _grid;
 			type = "level";
 

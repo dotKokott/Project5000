@@ -1,6 +1,7 @@
 package Entities.Projectiles 
 {	
 	import flash.display.BitmapData;
+	import flash.geom.Point;
 	import net.flashpunk.Entity;
 	import net.flashpunk.graphics.Emitter;
 	import net.flashpunk.graphics.Graphiclist;
@@ -15,8 +16,8 @@ package Entities.Projectiles
 		[Embed(source = '../../../assets/sprites/scherbe.png')] private const SPRITE_SHARDS:Class;
 		
 		protected var horizontalSpeed:Number = 0.0;
-		protected var verticalSpeed:Number = -6;
-		protected var horizontalAcceleration:Number = 6;
+		protected var verticalSpeed:Number = -2;
+		protected var horizontalAcceleration:Number = 8;
 		protected var gravity:Number = 0.2;
 		protected var maximalSpeed:Number = 3;
 		protected var EXPLOSION_SIZE:uint = 10;
@@ -73,9 +74,15 @@ package Entities.Projectiles
 					y += FP.sign(verticalSpeed); 
 				} 
 				else 
-				{ 
+				{ 					
 					destroy();
+					break;
 				}
+			}
+			
+			if (!collidable && (ExplosionEmitter.particleCount == 0))
+			{
+				this.world.remove(this);	
 			}
 			
 			verticalSpeed += gravity;
@@ -86,7 +93,7 @@ package Entities.Projectiles
 			}
 		}
 		
-		private function destroy():void
+		public function destroy():void
 		{
 			if (collidable)
 			{
@@ -96,14 +103,9 @@ package Entities.Projectiles
 				for (var i:uint = 0; i < EXPLOSION_SIZE; i++)
 				{
 					ExplosionEmitter.emit("explode", this.centerX, this.centerY);				
-				}
-				
-				if (!collidable && ExplosionEmitter.particleCount == EXPLOSION_SIZE)
-				{
-					this.world.remove(this);	
-				}						
-			}	
+				}										
+			}				
 		}
+		
 	}
-
 }

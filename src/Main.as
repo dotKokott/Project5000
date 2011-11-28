@@ -9,6 +9,7 @@ package
 		{			
 			super(800, 608, 60, false);
 			FP.world = new MyWorld;
+			FP.console.enable();
 		}			
 	}	
 }

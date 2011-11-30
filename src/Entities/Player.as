@@ -45,7 +45,6 @@ package Entities
 			graphic = rightSpritemap;
 			
 			setHitbox(48, 32);
-			y = 500;
 			Input.define("right", Key.RIGHT, Key.D);
 			Input.define("left", Key.LEFT, Key.A);
 			Input.define("jump", Key.X, Key.UP);

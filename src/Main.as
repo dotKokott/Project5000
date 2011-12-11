@@ -8,7 +8,7 @@ package
 		public function Main()
 		{			
 			super(800, 608, 60, false);
-			FP.world = new MyWorld;
+			FP.world = new MainMenuWorld;
 			FP.console.enable();
 		}			
 	}	

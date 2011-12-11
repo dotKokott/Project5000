@@ -1,5 +1,6 @@
 package  
 {	
+	import GUI.HUD;
 	import net.flashpunk.FP;
 	import net.flashpunk.World;
 	import net.flashpunk.utils.Input;
@@ -22,8 +23,9 @@ package
 		override public function begin():void
 		{
 			add(new Level(DEFAULT_MAP));
-			player = new Player();
+			player = new Player();			
 			add(player);
+			add(new HUD(player));
 		}		
 	
 		override public function update():void 

@@ -15,6 +15,8 @@ package Entities
 		public var leftSpritemap:Spritemap;
 		public var rightSpritemap:Spritemap;
 		
+		public var Health:int = 100;
+		
 		protected var horizontalSpeed:Number = 0.0;
 		protected var verticalSpeed:Number = 0.0;
 		protected var horizontalAcceleration:Number = 3;

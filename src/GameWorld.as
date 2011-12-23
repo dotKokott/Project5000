@@ -1,5 +1,6 @@
 package  
 {	
+	import Entities.Collectables.CollectableItem;
 	import GUI.HUD;
 	import net.flashpunk.FP;
 	import net.flashpunk.World;
@@ -14,6 +15,7 @@ package
 	{		
 		[Embed(source = "Level/TestLevel.oel", mimeType = "application/octet-stream")] private static const DEFAULT_MAP:Class;		
 		private var player:Player;
+		private var hud:HUD;
 		
 		public function GameWorld() 
 		{
@@ -21,11 +23,15 @@ package
 		}
 		
 		override public function begin():void
-		{
+		{					
 			add(new Level(DEFAULT_MAP));
 			player = new Player();			
 			add(player);
-			add(new HUD(player));
+			
+			hud = new HUD(player);
+			add(hud);
+
+			add(new CollectableItem(50,530));
 		}		
 	
 		override public function update():void 
@@ -34,8 +40,8 @@ package
 			if (Input.check(Key.ESCAPE))
 			{
 				FP.world = new MainMenuWorld;				
-			}
-			
+			}			
+			hud.updateHUD();
 			Camera.followPlayer(player);
 		}		
 	}		

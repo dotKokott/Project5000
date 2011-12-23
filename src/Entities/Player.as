@@ -1,5 +1,6 @@
 package Entities
 {	
+	import Entities.Collectables.CollectableItem;
 	import Entities.Projectiles.ClubMateProjectile;
 	import net.flashpunk.FP;
 	import net.flashpunk.Entity;
@@ -16,6 +17,7 @@ package Entities
 		public var rightSpritemap:Spritemap;
 		
 		public var Health:int = 100;
+		public var Score:int = 0;
 		
 		protected var horizontalSpeed:Number = 0.0;
 		protected var verticalSpeed:Number = 0.0;
@@ -133,7 +135,14 @@ package Entities
 			{				
 				this.world.add(new ClubMateProjectile(this, direction));
 				allowAttack = false;
-			}		
+			}
+			
+			var item:CollectableItem = collide("collectable", x, y) as CollectableItem;
+			if (item)
+			{
+				this.world.remove(item);
+				Score += 1;
+			}
 		}
 		
 		public function animate():void

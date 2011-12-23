@@ -10,7 +10,8 @@ package GUI
 	public class HUD extends Entity
 	{
 		private var player:Player;
-		private var bar:Image;		
+		private var bar:Image;	
+		private var score:Text;
 		
 		public function HUD(player:Player) 
 		{
@@ -38,14 +39,17 @@ package GUI
 			
 			bar.scaleX = 26;
 			
+			score = new Text("0", 150, 5);
+			score.scrollX = score.scrollY = 0;
 			
-			graphic = new Graphiclist(frame,inside, bar);
+			graphic = new Graphiclist(frame,inside, bar,score);
 			updateHUD();
 		}
 		
 		public function updateHUD():void
 		{
 			bar.scaleX = player.Health;
+			score.text = player.Score.toString();
 		}		
 	}
 }

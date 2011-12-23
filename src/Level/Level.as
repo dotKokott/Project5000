@@ -7,8 +7,8 @@ package Level
 	
 	public class Level extends Entity
 	{		
-		private var _tiles:Tilemap;
-		private var _grid:Grid;
+		public var _tiles:Tilemap;
+		public var _grid:Grid;
 		
 		public function Level(xml:Class)
 		{

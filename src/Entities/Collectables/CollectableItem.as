@@ -30,7 +30,7 @@ package Entities.Collectables
 			}			
 			y += floatStrength;
 			
-			trace(offsetY + floatBound);
+			
 		}
 	}
 }

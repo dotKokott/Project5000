@@ -1,6 +1,8 @@
 package  
 {	
 	import Entities.Collectables.CollectableItem;
+	import Entities.EmitterEntity;
+	import Entities.EmitterEntity;
 	import GUI.HUD;
 	import net.flashpunk.FP;
 	import net.flashpunk.World;
@@ -31,7 +33,7 @@ package
 			hud = new HUD(player);
 			add(hud);
 
-			add(new CollectableItem(50,530));
+			add(new CollectableItem(50, 530));
 		}		
 	
 		override public function update():void 

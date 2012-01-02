@@ -23,7 +23,7 @@ package Entities
 		protected var verticalSpeed:Number = 0.0;
 		protected var horizontalAcceleration:Number = 3;
 		protected var gravity:Number = 0.2;
-		protected var floatSpeed:Number = 0.4;
+		protected var floatSpeed:Number = 0.2;
 		protected var maximalSpeed:Number = 3;
 		protected var jumpSpeed:Number = 6;		
 		protected var direction:Number = 1;
@@ -102,9 +102,20 @@ package Entities
 			
 			verticalSpeed += gravity;
 			
-			if (!Input.check("left")  && !Input.check("right")) 
+			if (!Input.check("left")  && !Input.check("right"))
 			{
 				horizontalSpeed -= FP.sign(horizontalSpeed) * floatSpeed;
+				
+				if (horizontalSpeed > 0)
+				{
+				this.world.add(new EmitterEntity(this.x +32, this.y+32,FP.sign(horizontalSpeed)));
+				}
+								
+				if (horizontalSpeed < 0)
+				{
+				this.world.add(new EmitterEntity(this.x , this.y+32, FP.sign(horizontalSpeed)));
+				}
+				
 				if (Math.abs(horizontalSpeed) <= 0.2) 
 				{ 
 					horizontalSpeed = 0; 
@@ -136,6 +147,8 @@ package Entities
 				this.world.add(new ClubMateProjectile(this, direction));
 				allowAttack = false;
 			}
+			
+			
 			
 			var item:CollectableItem = collide("collectable", x, y) as CollectableItem;
 			if (item)
